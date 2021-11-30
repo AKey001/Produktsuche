@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "186463121321",
+    "project_id": "produktsuche-se1",
+    "storage_bucket": "produktsuche-se1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:186463121321:android:eb758997478ef2e50d5eb8",
+        "android_client_info": {
+          "package_name": "de.produktsuche"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "186463121321-u2oecvbl0tubk78npne49qbb33iujsig.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJknxiHqyVQpXUP9oB9dKgMQ8EXcMKvbs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "186463121321-u2oecvbl0tubk78npne49qbb33iujsig.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
