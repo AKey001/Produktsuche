@@ -1,4 +1,4 @@
-package de.produktsuche.ui.notifications;
+package de.produktsuche.ui.third_tab;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

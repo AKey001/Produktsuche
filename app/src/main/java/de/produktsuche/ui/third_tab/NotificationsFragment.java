@@ -1,4 +1,4 @@
-package de.produktsuche.ui.notifications;
+package de.produktsuche.ui.third_tab;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,7 +12,6 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import de.produktsuche.R;
 import de.produktsuche.databinding.FragmentNotificationsBinding;
 
 public class NotificationsFragment extends Fragment {
