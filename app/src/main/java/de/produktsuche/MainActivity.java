@@ -11,12 +11,6 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-import javax.inject.Inject;
-
-import dagger.Component;
-import de.produktsuche.backend.commons.HTTPRequest;
-import de.produktsuche.databinding.ActivityMainBinding;
-
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -37,9 +31,6 @@ public class MainActivity extends AppCompatActivity {
         AppBarConfiguration appBarConfiguration1 = new AppBarConfiguration.Builder(R.id.mobile_navigation).build();
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration1);
 
-
-        HTTPRequest httpRequest = new HTTPRequest();
-        httpRequest.request("https://jsonplaceholder.typicode.com/todos/1", this);
     }
 
 }

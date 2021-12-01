@@ -14,7 +14,7 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="Theme.Studium.Toolbar" parent="Widget.MaterialComponents.Toolbar.Primary">
+    <style name="Theme.Produktsuche.Toolbar" parent="Widget.MaterialComponents.Toolbar.Primary">
         <item name="titleTextColor">?attr/colorOnPrimary</item>
         <item name="colorControlNormal">@color/white</item>
     </style>
