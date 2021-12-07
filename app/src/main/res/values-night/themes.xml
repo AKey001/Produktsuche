@@ -14,7 +14,11 @@
         <!-- Customize your theme here. -->
         <item name="actionBarStyle">@style/Widget.MaterialComponents.Toolbar.Primary</item>
         <item name="textInputStyle">@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox</item>
+
+        <item name="searchViewStyle">@style/Theme.Produktsuche.SearchView</item>
     </style>
 
     <style name="Theme.Produktsuche.Toolbar" parent="Theme.MaterialComponents.DayNight.NoActionBar"/>
+
+    <style name="Theme.Produktsuche.SearchView" parent="Widget.AppCompat.SearchView.ActionBar"/>
 </resources>

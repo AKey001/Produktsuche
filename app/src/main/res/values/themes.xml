@@ -20,6 +20,18 @@
         </item>
 
         <item name="toolbarStyle">@style/Widget.MaterialComponents.Toolbar.Primary</item>
+
+        <item name="searchViewStyle">@style/Theme.Produktsuche.SearchView</item>
+    </style>
+
+
+
+
+    <style name="Theme.Produktsuche.SearchView" parent="Widget.AppCompat.SearchView">
+        <item name="queryBackground">@null</item>
+        <item name="searchHintIcon">@null</item>
+        <item name="layout">@layout/search_view_layout</item>
+        <item name="defaultQueryHint">@string/abc_search_hint</item>
     </style>
 
     <style name="Theme.Produktsuche.Toolbar" parent="Widget.MaterialComponents.Toolbar.Primary">

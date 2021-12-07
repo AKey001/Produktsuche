@@ -20,6 +20,6 @@
     <fragment
         android:id="@+id/navigation_notifications"
         android:name="de.produktsuche.ui.third_tab.NotificationsFragment"
-        android:label="@string/title_notifications"
+        android:label="@string/title_notification"
         tools:layout="@layout/fragment_notifications" />
 </navigation>

@@ -31,7 +31,8 @@ public class FCMMessagingService extends FirebaseMessagingService {
         NotificationBuilder notificationBuilder = new NotificationBuilder();
         notificationBuilder.showNotification(remoteMessage.getData().get("title"), remoteMessage.getData().get("body"));
 
-        Log.d("NOTIFICATION", remoteMessage.getNotification().getBody());
+        Log.d("NOTIFICATION FCM", remoteMessage.getNotification().getTitle());
+        Log.d("NOTIFICATION FCM", remoteMessage.getNotification().getBody());
 
     }
 
