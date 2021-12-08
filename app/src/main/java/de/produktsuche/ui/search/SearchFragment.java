@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -25,22 +26,23 @@ import de.produktsuche.R;
 public class SearchFragment extends Fragment {
     private MaterialAlertDialogBuilder dialogbuilder;
     private View dialogView;
-    private LayoutInflater dialogInflater;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         setHasOptionsMenu(true);
         View root = inflater.inflate(R.layout.content_list, container, false);
 
-
-        dialogInflater = getLayoutInflater();
-        dialogView = dialogInflater.inflate(R.layout.popup, null);
         dialogbuilder = new MaterialAlertDialogBuilder(getContext());
         dialogbuilder.setTitle("Filter")
-                .setNegativeButton("Abbrechen", (dialog, which) -> {})
-                .setPositiveButton("Ok", (dialog, which) -> {});
-        dialogbuilder.setView(dialogView);
-        dialogbuilder.create();
+                .setNegativeButton("Abbrechen", (dialog, which) -> {
+                        TextView view = (TextView) dialogView.findViewById(R.id.textView4);
+                        Toast.makeText(getContext(), view.getText(), Toast.LENGTH_SHORT).show();
+                })
+                .setPositiveButton("Ok", (dialog, which) -> {
+                    dialog.dismiss();
+                });
+
+
         return root;
     }
 
@@ -72,6 +74,9 @@ public class SearchFragment extends Fragment {
         switch (item.getItemId()) {
             case R.id.action_filter:
 
+                dialogView = getActivity().getLayoutInflater().inflate(R.layout.popup, null, false);
+                dialogbuilder.setView(dialogView);
+                dialogbuilder.create();
                 dialogbuilder.show();
 
                 break;
