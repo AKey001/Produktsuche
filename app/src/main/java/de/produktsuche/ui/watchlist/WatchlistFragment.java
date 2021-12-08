@@ -1,4 +1,4 @@
-package de.produktsuche.ui.login;
+package de.produktsuche.ui.watchlist;
 
 import android.app.SearchManager;
 import android.content.Context;
@@ -17,12 +17,12 @@ import androidx.fragment.app.Fragment;
 
 import de.produktsuche.R;
 
-public class LoginFragment extends Fragment {
+public class WatchlistFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         setHasOptionsMenu(true);
-        View root = inflater.inflate(R.layout.fragment_login, container, false);
+        View root = inflater.inflate(R.layout.content_list, container, false);
 
         return root;
     }
