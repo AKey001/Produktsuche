@@ -17,5 +17,7 @@
     <string name="item_verfügbar_tag">Verfügbar:</string>
     <string name="item_verfügbar_var">30 Stk</string>
     <string name="item_Name">Banane</string>
-
+    <string name="filter_stadt">Stadt</string>
+    <string name="filter_preis_von">Preis von:</string>
+    <string name="filter_preis_bis">Preis bis:</string>
 </resources>

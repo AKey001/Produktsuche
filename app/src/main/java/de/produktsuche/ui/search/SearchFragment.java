@@ -1,5 +1,6 @@
 package de.produktsuche.ui.search;
 
+import android.app.Dialog;
 import android.app.SearchManager;
 import android.content.Context;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -18,6 +20,7 @@ import androidx.fragment.app.Fragment;
 import de.produktsuche.R;
 
 public class SearchFragment extends Fragment {
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -55,6 +58,7 @@ public class SearchFragment extends Fragment {
 
         switch (item.getItemId()) {
             case R.id.action_filter:
+
 
                 break;
         }

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         Log.d("NOTIFICATION FCM ID", sharedPreferences.getString("fcm_token", "error"));
 
@@ -36,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
         AppBarConfiguration appBarConfiguration1 = new AppBarConfiguration.Builder(R.id.mobile_navigation).build();
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration1);
+
 
     }
 
