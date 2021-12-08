@@ -20,4 +20,9 @@
     <string name="filter_stadt">Stadt</string>
     <string name="filter_preis_von">Preis von:</string>
     <string name="filter_preis_bis">Preis bis:</string>
+    <string name="login_hint_Name">Name</string>
+    <string name="login_hint_Pwd">Password</string>
+    <string name="login_login_Btn">Login</string>
+    <string name="login_register_Btn">Registrieren</string>
+    <string name="login_register_hint">Noch kein Account?</string>
 </resources>
