@@ -3,6 +3,7 @@ package de.produktsuche.ui.search;
 import android.app.Dialog;
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -17,17 +18,29 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+
 import de.produktsuche.R;
 
 public class SearchFragment extends Fragment {
-
+    private MaterialAlertDialogBuilder dialogbuilder;
+    private View dialogView;
+    private LayoutInflater dialogInflater;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         setHasOptionsMenu(true);
-        View root = inflater.inflate(R.layout.fragment_dashboard, container, false);
+        View root = inflater.inflate(R.layout.content_list, container, false);
 
 
+        dialogInflater = getLayoutInflater();
+        dialogView = dialogInflater.inflate(R.layout.popup, null);
+        dialogbuilder = new MaterialAlertDialogBuilder(getContext());
+        dialogbuilder.setTitle("Filter")
+                .setNegativeButton("Abbrechen", (dialog, which) -> {})
+                .setPositiveButton("Ok", (dialog, which) -> {});
+        dialogbuilder.setView(dialogView);
+        dialogbuilder.create();
         return root;
     }
 
@@ -59,6 +72,7 @@ public class SearchFragment extends Fragment {
         switch (item.getItemId()) {
             case R.id.action_filter:
 
+                dialogbuilder.show();
 
                 break;
         }

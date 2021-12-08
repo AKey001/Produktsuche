@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/navigation_reserved_list"
-        android:name="de.produktsuche.ui.reserved_list.Reserved_ListFragment"
+        android:name="de.produktsuche.ui.reserved_list.ReservedListFragment"
         android:label="@string/title_reserved_list"
         tools:layout="@layout/content_list" />
 
