@@ -28,7 +28,7 @@
             android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/mtrl_list_item_icon"
+                android:id="@+id/list_item_icon"
                 android:layout_width="56dp"
                 android:layout_height="56dp"
                 android:layout_marginVertical="16dp"
@@ -40,7 +40,7 @@
                 app:layout_constraintVertical_bias="0.0" />
 
             <TextView
-                android:id="@+id/editTextProduct"
+                android:id="@+id/textViewProduct"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -51,12 +51,12 @@
                 android:text="Produkt"
                 android:textAppearance="?attr/textAppearanceSubtitle1"
                 android:textColor="@color/list_item_background"
-                app:layout_constraintEnd_toStartOf="@+id/editTextPrice"
-                app:layout_constraintStart_toEndOf="@+id/mtrl_list_item_icon"
+                app:layout_constraintEnd_toStartOf="@+id/textViewPrice"
+                app:layout_constraintStart_toEndOf="@+id/list_item_icon"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/editTextShop"
+                android:id="@+id/textViewShop"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -65,12 +65,12 @@
                 android:text="Kaufland Weinhübel"
                 android:textAppearance="?attr/textAppearanceBody2"
                 android:textColor="?android:attr/textColorSecondary"
-                app:layout_constraintEnd_toStartOf="@+id/editTextPrice"
-                app:layout_constraintStart_toEndOf="@+id/mtrl_list_item_icon"
-                app:layout_constraintTop_toBottomOf="@+id/editTextProduct" />
+                app:layout_constraintEnd_toStartOf="@+id/textViewPrice"
+                app:layout_constraintStart_toEndOf="@+id/list_item_icon"
+                app:layout_constraintTop_toBottomOf="@+id/textViewProduct" />
 
             <TextView
-                android:id="@+id/editTextAvailability"
+                android:id="@+id/textViewAvailability"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
@@ -78,13 +78,13 @@
                 android:text="verfügbar"
                 android:textAppearance="?attr/textAppearanceBody2"
                 android:textColor="?android:attr/textColorSecondary"
-                app:layout_constraintEnd_toStartOf="@+id/editTextPrice"
-                app:layout_constraintStart_toEndOf="@+id/mtrl_list_item_icon"
-                app:layout_constraintTop_toBottomOf="@id/editTextShop" />
+                app:layout_constraintEnd_toStartOf="@+id/textViewPrice"
+                app:layout_constraintStart_toEndOf="@+id/list_item_icon"
+                app:layout_constraintTop_toBottomOf="@id/textViewShop" />
 
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/editTextPrice"
+                android:id="@+id/textViewPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
@@ -94,15 +94,15 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:srcCompat="@drawable/ic_baseline_add_24" />
+<!--            <ImageView-->
+<!--                android:id="@+id/imageView"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginEnd="16dp"-->
+<!--                android:layout_marginBottom="8dp"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:srcCompat="@drawable/ic_baseline_add_24" />-->
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
