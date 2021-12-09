@@ -11,12 +11,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import de.produktsuche.R;
+import de.produktsuche.backend.commons.PriceConverter;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
     private final List<Product> items;
+    private PriceConverter priceConverter;
 
     public RecyclerViewAdapter(List<Product> products) {
         items = products;
+        this.priceConverter = new PriceConverter();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -70,7 +73,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         } else {
             holder.getTextViewAvailability().setText("noch nicht bestätigt");
         }
-        holder.getTextViewPrice().setText(String.valueOf(product.getPrice()));
+        String price = priceConverter.convertPrice(product.getPrice());
+        holder.getTextViewPrice().setText(price);
     }
 
     @Override
