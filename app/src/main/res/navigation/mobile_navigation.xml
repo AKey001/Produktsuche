@@ -9,24 +9,46 @@
         android:id="@+id/navigation_search"
         android:name="de.produktsuche.ui.search.SearchFragment"
         android:label="@string/title_search"
-        tools:layout="@layout/content_list" />
+        tools:layout="@layout/content_list" >
+        <action
+            android:id="@+id/action_navigation_search_to_navigation_login"
+            app:destination="@id/navigation_login" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_watchlist"
         android:name="de.produktsuche.ui.watchlist.WatchlistFragment"
         android:label="@string/title_watchlist"
-        tools:layout="@layout/content_list" />
+        tools:layout="@layout/content_list" >
+        <action
+            android:id="@+id/action_navigation_watchlist_to_navigation_login"
+            app:destination="@id/navigation_login" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_reserved_list"
         android:name="de.produktsuche.ui.reserved_list.ReservedListFragment"
         android:label="@string/title_reserved_list"
-        tools:layout="@layout/content_list" />
+        tools:layout="@layout/content_list" >
+        <action
+            android:id="@+id/action_navigation_reserved_list_to_navigation_login"
+            app:destination="@id/navigation_login" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_login"
         android:name="de.produktsuche.ui.login.LoginFragment"
         android:label="@string/title_login"
         tools:layout="@layout/fragment_login"
-        />
+        >
+        <action
+            android:id="@+id/action_navigation_login_to_navigation_search"
+            app:destination="@id/navigation_search" />
+        <action
+            android:id="@+id/action_navigation_login_to_navigation_watchlist"
+            app:destination="@id/navigation_watchlist" />
+        <action
+            android:id="@+id/action_navigation_login_to_navigation_reserved_list"
+            app:destination="@id/navigation_reserved_list" />
+    </fragment>
 </navigation>
