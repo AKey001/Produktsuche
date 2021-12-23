@@ -50,5 +50,25 @@
         <action
             android:id="@+id/action_navigation_login_to_navigation_reserved_list"
             app:destination="@id/navigation_reserved_list" />
+        <action
+            android:id="@+id/action_navigation_login_to_navigation_register"
+            app:destination="@id/navigation_register"/>
     </fragment>
+
+    <fragment
+        android:id="@+id/navigation_register"
+        android:name="de.produktsuche.ui.register.RegisterFragment"
+        android:label="@string/title_register"
+        tools:layout="@layout/fragment_register">
+        <action
+            android:id="@+id/action_navigation_register_to_navigation_search"
+            app:destination="@id/navigation_search" />
+        <action
+            android:id="@+id/action_navigation_register_to_navigation_watchlist"
+            app:destination="@id/navigation_watchlist" />
+        <action
+            android:id="@+id/action_navigation_register_to_navigation_reserved_list"
+            app:destination="@id/navigation_reserved_list" />
+    </fragment>
+
 </navigation>

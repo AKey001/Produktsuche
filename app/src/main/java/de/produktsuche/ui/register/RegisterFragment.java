@@ -1,4 +1,4 @@
-package de.produktsuche.ui.login;
+package de.produktsuche.ui.register;
 
 import android.app.SearchManager;
 import android.content.Context;
@@ -10,31 +10,23 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-import androidx.navigation.fragment.NavHostFragment;
 
 import de.produktsuche.R;
 
-public class LoginFragment extends Fragment {
+public class RegisterFragment extends Fragment {
     private NavController navController;
-    private NavHostFragment navHostFragment;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         setHasOptionsMenu(true);
         View root = inflater.inflate(R.layout.fragment_login, container, false);
-
-
-        Button registerBtn = (Button) root.findViewById(R.id.buttonSignUp);
-        registerBtn.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v){
-                NavHostFragment.findNavController(LoginFragment.this).navigate(R.id.action_navigation_login_to_navigation_register);
-            }});
         return root;
     }
 

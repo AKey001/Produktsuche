@@ -21,4 +21,7 @@
     <string name="login_login_Btn">Login</string>
     <string name="login_register_Btn">Registrieren</string>
     <string name="login_register_hint">Noch kein Account?</string>
+    <string name="registerCheckboxKäufer">Käufer</string>
+    <string name="registerCheckboxVerkäufer">Verkäufer</string>
+    <string name="register_hint_Pwd_Wdh">Password wiederholen</string>
 </resources>
