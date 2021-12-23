@@ -21,12 +21,11 @@ import androidx.navigation.Navigation;
 import de.produktsuche.R;
 
 public class RegisterFragment extends Fragment {
-    private NavController navController;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         setHasOptionsMenu(true);
-        View root = inflater.inflate(R.layout.fragment_login, container, false);
+        View root = inflater.inflate(R.layout.fragment_register, container, false);
         return root;
     }
 

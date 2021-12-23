@@ -21,20 +21,17 @@ import androidx.navigation.fragment.NavHostFragment;
 import de.produktsuche.R;
 
 public class LoginFragment extends Fragment {
-    private NavController navController;
-    private NavHostFragment navHostFragment;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         setHasOptionsMenu(true);
         View root = inflater.inflate(R.layout.fragment_login, container, false);
 
-
         Button registerBtn = (Button) root.findViewById(R.id.buttonSignUp);
-        registerBtn.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v){
-                NavHostFragment.findNavController(LoginFragment.this).navigate(R.id.action_navigation_login_to_navigation_register);
-            }});
+        registerBtn.setOnClickListener(v -> {
+            NavHostFragment.findNavController(LoginFragment.this)
+                    .navigate(R.id.action_navigation_login_to_navigation_register);
+        });
         return root;
     }
 
