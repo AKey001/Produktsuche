@@ -4,9 +4,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.util.List;
 
@@ -27,6 +31,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         private final TextView textViewStore;
         private final TextView textViewAvailability;
         private final TextView textViewPrice;
+        private final CardView card;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -35,6 +40,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             textViewStore = itemView.findViewById(R.id.textViewShop);
             textViewAvailability = itemView.findViewById(R.id.textViewAvailability);
             textViewPrice = itemView.findViewById(R.id.textViewPrice);
+            card = itemView.findViewById(R.id.card);
         }
 
         public TextView getTextViewProduct() {
@@ -51,6 +57,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         public TextView getTextViewPrice() {
             return textViewPrice;
+        }
+
+        public CardView getCard() {
+            return card;
         }
     }
 
@@ -75,6 +85,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         }
         String price = priceConverter.convertPrice(product.getPrice());
         holder.getTextViewPrice().setText(price);
+
+        holder.getCard().setOnClickListener(v -> {
+            Toast.makeText(v.getContext(), "dgdfg", Toast.LENGTH_SHORT).show();
+            //TODO
+        });
+
     }
 
     @Override
