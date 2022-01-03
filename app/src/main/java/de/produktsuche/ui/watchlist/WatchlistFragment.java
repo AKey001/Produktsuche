@@ -49,6 +49,8 @@ public class WatchlistFragment extends Fragment {
 
         RecyclerView recyclerView = (RecyclerView) root.findViewById(R.id.recyclerView);
         RecyclerViewAdapter adapter = new RecyclerViewAdapter(products);
+        adapter.addContextActivity(getActivity());
+        adapter.addUseCase("watchlist");
         recyclerView.setAdapter(adapter);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());

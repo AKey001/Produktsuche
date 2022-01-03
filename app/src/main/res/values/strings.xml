@@ -24,4 +24,9 @@
     <string name="registerCheckboxKäufer">Käufer</string>
     <string name="registerCheckboxVerkäufer">Verkäufer</string>
     <string name="register_hint_Pwd_Wdh">Password wiederholen</string>
+    <string name="addWatchlist">Watchlist hinzufügen</string>
+    <string name="anzahl">Anzahl</string>
+    <string name="reserve">Reservieren</string>
+    <string name="endObservation">Beobachtung beenden</string>
+    <string name="endReservation">Reservierung aufheben</string>
 </resources>

@@ -1,5 +1,6 @@
 package de.produktsuche.backend.products;
 
+import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
@@ -20,10 +22,15 @@ import de.produktsuche.backend.commons.PriceConverter;
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
     private final List<Product> items;
     private PriceConverter priceConverter;
+    private View dialogView;
+    private MaterialAlertDialogBuilder dialogbuilder;
+    private Activity activi;
+    private String useCase = "";
 
     public RecyclerViewAdapter(List<Product> products) {
         items = products;
         this.priceConverter = new PriceConverter();
+
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -87,11 +94,36 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.getTextViewPrice().setText(price);
 
         holder.getCard().setOnClickListener(v -> {
-            Toast.makeText(v.getContext(), "dgdfg", Toast.LENGTH_SHORT).show();
-            //TODO
+            dialogbuilder = new MaterialAlertDialogBuilder(holder.getCard().getContext());
+            dialogbuilder.setNegativeButton("Abbrechen", (dialog, which) -> {dialog.dismiss();});
+
+            switch(useCase) {
+                case "search":
+                    dialogView = activi.getLayoutInflater().inflate(R.layout.search_popup, null, false);
+                    break;
+                case "watchlist":
+                    dialogView = activi.getLayoutInflater().inflate(R.layout.watchlist_popup, null, false);
+                    break;
+                case "reserved":
+                    dialogView = activi.getLayoutInflater().inflate(R.layout.reservedlist_popup, null, false);
+                    break;
+            }
+            dialogbuilder.setView(dialogView);
+            dialogbuilder.create();
+            dialogbuilder.show();
         });
 
     }
+
+    public void addContextActivity(Activity act){
+        activi = act;
+    }
+
+    public void addUseCase(String uC){
+        useCase = uC;
+    }
+
+
 
     @Override
     public int getItemCount() {
