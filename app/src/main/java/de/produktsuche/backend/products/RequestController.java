@@ -1,5 +1,6 @@
 package de.produktsuche.backend.products;
 
+import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
 import android.view.View;
@@ -22,8 +23,10 @@ import de.produktsuche.backend.commons.JsonObjectRequestHandler;
 
 public class RequestController {
 
-    public void loadProductsWithFilter(HashMap<String, String> filter, Context context, String url,
-                                       RecyclerView view) {
+    public void loadProductsWithFilter(ListType type, HashMap<String, String> filter, Activity activity,
+                                       String url, RecyclerView view) {
+
+        Context context = activity.getApplicationContext();
 
         JsonObjectRequestHandler jsonObjectRequestHandler = new JsonObjectRequestHandler();
         jsonObjectRequestHandler.executeRequestAndLoadView(context, url, filter, (response) -> {
@@ -31,7 +34,7 @@ public class RequestController {
 
             //TODO convert response to product list
 
-            RecyclerView.Adapter adapter = new RecyclerViewAdapter(products);
+            RecyclerView.Adapter adapter = new RecyclerViewAdapter(activity, products, type);
             RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
             view.setLayoutManager(layoutManager);
             view.setAdapter(adapter);
