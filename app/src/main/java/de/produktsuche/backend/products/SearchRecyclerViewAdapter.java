@@ -100,7 +100,10 @@ public class SearchRecyclerViewAdapter extends RecyclerView.Adapter<SearchRecycl
             dialogbuilder = new MaterialAlertDialogBuilder(holder.getCard().getContext());
             dialogbuilder.setTitle("Produkt merken");
             dialogbuilder.setItems(popupItems, (dialog, which) -> {
-                //Button action
+
+
+                // add function : add Watchlist(),
+                //ad function : add Reservedlist();
                 dialog.dismiss();
             });
             dialogbuilder.setView(dialogView);

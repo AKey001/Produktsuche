@@ -27,8 +27,8 @@
     <string name="addWatchlist">Watchlist hinzufügen</string>
     <string name="anzahl">Anzahl</string>
     <string name="reserve">Reservieren</string>
-    <string name="endObservation">Beobachtung beenden</string>
-    <string name="endReservation">Reservierung aufheben</string>
+    <string name="endObservation">Beobachtung beenden?</string>
+    <string name="endReservation">Reservierung aufheben?</string>
     <string name="watchlist_popup_text">Produkt von der Liste entfernen?</string>
     <string name="reservedlist_popup_text">Reservierung des Produkts aufheben?</string>
     <string name="searchlist_popup_text">Produkt reservieren?</string>

@@ -96,8 +96,9 @@ public class WatchlistRecyclerViewAdapter extends RecyclerView.Adapter<SearchRec
             dialogView = activity.getLayoutInflater().inflate(R.layout.watchlist_popup, null, false);
             dialogbuilder.setNegativeButton("Abbrechen", (dialog, which) -> {dialog.dismiss();})
                     .setPositiveButton("Entfernen", (dialog, which) -> {
-
-
+                        //------------api call------------
+                        items.remove(position);
+                        notifyDataSetChanged();
                         dialog.dismiss();
                     });
 

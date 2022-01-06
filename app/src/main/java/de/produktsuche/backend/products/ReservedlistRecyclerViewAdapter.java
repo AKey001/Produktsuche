@@ -97,7 +97,8 @@ public class ReservedlistRecyclerViewAdapter extends RecyclerView.Adapter<Search
             dialogView = activity.getLayoutInflater().inflate(R.layout.reservedlist_popup, null, false);
             dialogbuilder.setNegativeButton("Abbrechen", (dialog, which) -> {dialog.dismiss();});
             dialogbuilder.setPositiveButton("Aufheben", (dialog, which) ->  {
-                Toast.makeText(v.getContext(), "Reservierung aufgehoben", Toast.LENGTH_SHORT).show();
+                items.remove(position);
+                notifyDataSetChanged();
             });
             dialogbuilder.setView(dialogView);
             dialogbuilder.create();
