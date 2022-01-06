@@ -16,7 +16,7 @@ import java.util.List;
 import de.produktsuche.R;
 import de.produktsuche.backend.products.ListType;
 import de.produktsuche.backend.products.Product;
-import de.produktsuche.backend.products.RecyclerViewAdapter;
+import de.produktsuche.backend.products.ReservedlistRecyclerViewAdapter;
 
 public class ReservedListFragment extends Fragment {
 
@@ -49,7 +49,7 @@ public class ReservedListFragment extends Fragment {
 
 
         RecyclerView recyclerView = (RecyclerView) root.findViewById(R.id.recyclerView);
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(getActivity(), products, ListType.RESERVE);
+        ReservedlistRecyclerViewAdapter adapter = new ReservedlistRecyclerViewAdapter(getActivity(), products);
         recyclerView.setAdapter(adapter);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());

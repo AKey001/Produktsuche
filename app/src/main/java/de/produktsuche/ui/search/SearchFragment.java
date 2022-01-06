@@ -24,9 +24,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.produktsuche.R;
-import de.produktsuche.backend.products.ListType;
 import de.produktsuche.backend.products.Product;
-import de.produktsuche.backend.products.RecyclerViewAdapter;
+import de.produktsuche.backend.products.SearchRecyclerViewAdapter;
 
 public class SearchFragment extends Fragment {
     private MaterialAlertDialogBuilder dialogbuilder;
@@ -70,7 +69,7 @@ public class SearchFragment extends Fragment {
         products.add(product3);
 
         RecyclerView recyclerView = (RecyclerView) root.findViewById(R.id.recyclerView);
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(getActivity(), products, ListType.SEARCH);
+        SearchRecyclerViewAdapter adapter = new SearchRecyclerViewAdapter(getActivity(), products);
         recyclerView.setAdapter(adapter);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());

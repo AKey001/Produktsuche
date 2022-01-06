@@ -17,19 +17,19 @@ import java.util.List;
 import de.produktsuche.R;
 import de.produktsuche.backend.commons.PriceConverter;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
+public class SearchRecyclerViewAdapter extends RecyclerView.Adapter<SearchRecyclerViewAdapter.ViewHolder> {
     private final List<Product> items;
     private PriceConverter priceConverter;
     private View dialogView;
     private MaterialAlertDialogBuilder dialogbuilder;
     private final Activity activity;
-    private final ListType type;
+    
 
-    public RecyclerViewAdapter(Activity activity, List<Product> products, ListType type) {
+    public SearchRecyclerViewAdapter(Activity activity, List<Product> products) {
         this.activity = activity;
         items = products;
         this.priceConverter = new PriceConverter();
-        this.type = type;
+        
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -95,7 +95,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.getCard().setOnClickListener(v -> {
             dialogbuilder = new MaterialAlertDialogBuilder(holder.getCard().getContext());
             dialogbuilder.setNegativeButton("Abbrechen", (dialog, which) -> {dialog.dismiss();});
-            dialogView = activity.getLayoutInflater().inflate(type.getPopupLayout(), null, false);
+            dialogView = activity.getLayoutInflater().inflate(R.layout.search_popup, null, false);
             dialogbuilder.setView(dialogView);
             dialogbuilder.create();
             dialogbuilder.show();

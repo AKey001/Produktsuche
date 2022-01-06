@@ -29,4 +29,5 @@
     <string name="reserve">Reservieren</string>
     <string name="endObservation">Beobachtung beenden</string>
     <string name="endReservation">Reservierung aufheben</string>
+    <string name="watchlist_popup_text">Produkt von der Liste entfernen?</string>
 </resources>
