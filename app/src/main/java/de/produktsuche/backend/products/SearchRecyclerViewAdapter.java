@@ -23,13 +23,16 @@ public class SearchRecyclerViewAdapter extends RecyclerView.Adapter<SearchRecycl
     private View dialogView;
     private MaterialAlertDialogBuilder dialogbuilder;
     private final Activity activity;
-    
+
+
+
 
     public SearchRecyclerViewAdapter(Activity activity, List<Product> products) {
         this.activity = activity;
         items = products;
         this.priceConverter = new PriceConverter();
-        
+
+
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -91,11 +94,15 @@ public class SearchRecyclerViewAdapter extends RecyclerView.Adapter<SearchRecycl
         }
         String price = priceConverter.convertPrice(product.getPrice());
         holder.getTextViewPrice().setText(price);
-
+        String[] popupItems = {"Wathclist hinzufügen", "Reservieren"};
         holder.getCard().setOnClickListener(v -> {
+
             dialogbuilder = new MaterialAlertDialogBuilder(holder.getCard().getContext());
             dialogbuilder.setNegativeButton("Abbrechen", (dialog, which) -> {dialog.dismiss();});
-            dialogView = activity.getLayoutInflater().inflate(R.layout.search_popup, null, false);
+            dialogbuilder.setItems(popupItems, (dialog, which) -> {
+                //Button action
+                dialog.dismiss();
+            });
             dialogbuilder.setView(dialogView);
             dialogbuilder.create();
             dialogbuilder.show();

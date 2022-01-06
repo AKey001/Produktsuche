@@ -93,8 +93,14 @@ public class WatchlistRecyclerViewAdapter extends RecyclerView.Adapter<SearchRec
 
         holder.getCard().setOnClickListener(v -> {
             dialogbuilder = new MaterialAlertDialogBuilder(holder.getCard().getContext());
-            dialogbuilder.setNegativeButton("Abbrechen", (dialog, which) -> {dialog.dismiss();});
             dialogView = activity.getLayoutInflater().inflate(R.layout.watchlist_popup, null, false);
+            dialogbuilder.setNegativeButton("Abbrechen", (dialog, which) -> {dialog.dismiss();})
+                    .setPositiveButton("Entfernen", (dialog, which) -> {
+
+
+                        dialog.dismiss();
+                    });
+
             dialogbuilder.setView(dialogView);
             dialogbuilder.create();
             dialogbuilder.show();
