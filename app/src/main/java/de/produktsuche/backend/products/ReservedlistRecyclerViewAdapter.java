@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -93,9 +94,11 @@ public class ReservedlistRecyclerViewAdapter extends RecyclerView.Adapter<Search
 
         holder.getCard().setOnClickListener(v -> {
             dialogbuilder = new MaterialAlertDialogBuilder(holder.getCard().getContext());
-            dialogbuilder.setNegativeButton("Abbrechen", (dialog, which) -> {dialog.dismiss();});
-
             dialogView = activity.getLayoutInflater().inflate(R.layout.reservedlist_popup, null, false);
+            dialogbuilder.setNegativeButton("Abbrechen", (dialog, which) -> {dialog.dismiss();});
+            dialogbuilder.setPositiveButton("Aufheben", (dialog, which) ->  {
+                Toast.makeText(v.getContext(), "Reservierung aufgehoben", Toast.LENGTH_SHORT).show();
+            });
             dialogbuilder.setView(dialogView);
             dialogbuilder.create();
             dialogbuilder.show();
