@@ -101,6 +101,7 @@ public class WatchlistRecyclerViewAdapter extends RecyclerView.Adapter<SearchRec
                         dialog.dismiss();
                     });
 
+
             dialogbuilder.setView(dialogView);
             dialogbuilder.create();
             dialogbuilder.show();

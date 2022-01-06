@@ -94,11 +94,11 @@ public class SearchRecyclerViewAdapter extends RecyclerView.Adapter<SearchRecycl
         }
         String price = priceConverter.convertPrice(product.getPrice());
         holder.getTextViewPrice().setText(price);
-        String[] popupItems = {"Wathclist hinzufügen", "Reservieren"};
+        String[] popupItems = {"Watchlist hinzufügen", "Reservieren"};
         holder.getCard().setOnClickListener(v -> {
 
             dialogbuilder = new MaterialAlertDialogBuilder(holder.getCard().getContext());
-            dialogbuilder.setNegativeButton("Abbrechen", (dialog, which) -> {dialog.dismiss();});
+            dialogbuilder.setTitle("Produkt merken");
             dialogbuilder.setItems(popupItems, (dialog, which) -> {
                 //Button action
                 dialog.dismiss();
