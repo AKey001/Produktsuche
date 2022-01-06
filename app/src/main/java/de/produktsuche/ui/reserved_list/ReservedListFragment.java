@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.produktsuche.R;
-import de.produktsuche.backend.products.ListType;
+
 import de.produktsuche.backend.products.Product;
 import de.produktsuche.backend.products.ReservedlistRecyclerViewAdapter;
 
