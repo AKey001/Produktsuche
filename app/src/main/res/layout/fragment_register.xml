@@ -14,34 +14,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
 
-        <RadioGroup
-            android:id="@+id/registerRadioButtonGroup"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="32dp"
-            android:checkedButton="@id/radioButton"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
 
-            >
-
-            <RadioButton
-                android:id="@+id/radioButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:buttonTint="@color/blue_grey_700"
-                android:text="@string/registerCheckboxKäufer" />
-
-            <RadioButton
-                android:id="@+id/radioButton2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:buttonTint="@color/blue_grey_700"
-                android:text="@string/registerCheckboxVerkäufer" />
-        </RadioGroup>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/registerTextFieldUsername"
