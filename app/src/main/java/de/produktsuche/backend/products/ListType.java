@@ -3,17 +3,23 @@ package de.produktsuche.backend.products;
 import de.produktsuche.R;
 
 public enum ListType {
-    SEARCH(R.layout.search_popup),
-    WATCH(R.layout.watchlist_popup),
-    RESERVE(R.layout.reservedlist_popup);
+    SEARCH("vorhanden", ""),
+    WATCH("vorhanden", "Von der Watchlist entfernen?"),
+    RESERVE("reserviert", "Reservierung entfernen?");
 
-    private final int popupLayout;
+    private final String adj;
+    private final String question;
 
-    ListType(int popupLayout) {
-        this.popupLayout = popupLayout;
+    ListType(String adj, String question) {
+        this.adj = adj;
+        this.question = question;
     }
 
-    public int getPopupLayout() {
-        return popupLayout;
+    public String getAdj() {
+        return adj;
+    }
+
+    public String getQuestion() {
+        return question;
     }
 }

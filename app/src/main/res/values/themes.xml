@@ -26,7 +26,6 @@
 
 
 
-
     <style name="Theme.Produktsuche.SearchView" parent="Widget.AppCompat.SearchView">
         <item name="queryBackground">@null</item>
         <item name="searchHintIcon">@null</item>

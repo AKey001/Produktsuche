@@ -1,12 +1,18 @@
 package de.produktsuche.ui.watchlist;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,7 +22,9 @@ import java.util.List;
 import de.produktsuche.R;
 import de.produktsuche.backend.products.ListType;
 import de.produktsuche.backend.products.Product;
-import de.produktsuche.backend.products.WatchlistRecyclerViewAdapter;
+import de.produktsuche.backend.products.RecyclerViewAdapter;
+import de.produktsuche.backend.products.RequestController;
+import de.produktsuche.ui.login.LoginFragment;
 
 public class WatchlistFragment extends Fragment {
 
@@ -25,35 +33,27 @@ public class WatchlistFragment extends Fragment {
         setHasOptionsMenu(true);
         View root = inflater.inflate(R.layout.content_list, container, false);
 
-        List<Product> products = new ArrayList<>();
+        TextView info = root.findViewById(R.id.info);
+        info.setText("Noch nichts beobachtet. \n Wechsle in den Suchtab, um Produkte hinzuzufügen.");
+        info.setVisibility(View.VISIBLE);
+        ProgressBar progressBar = root.findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.VISIBLE);
 
-        Product product1 = new Product();
-        product1.setName("Fritz kola");
-        product1.setStore("Kaufland Weinhübel");
-        product1.setAmount(250);
-        product1.setPrice(1.6);
-        Product product2 = new Product();
-        product2.setName("Red Bull Winteredition");
-        product2.setStore("Kaufland Weinhübel");
-        product2.setAmount(0);
-        product2.setPrice(1.71);
-        Product product3 = new Product();
-        product3.setName("Fritz-Spritz Rhabarberschorle");
-        product3.setStore("Kaufland Weinhübel");
-        product3.setAmount(72);
-        product3.setPrice(1.6);
+        RequestController requestController = new RequestController();
+        RecyclerView recyclerView = root.findViewById(R.id.recyclerView);
 
-        products.add(product1);
-        products.add(product2);
-        products.add(product3);
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        String account = sharedPreferences.getString("AccountUUID", null);
 
+        if (account == null) {
+            NavHostFragment.findNavController(WatchlistFragment.this)
+                    .navigate(R.id.action_navigation_watchlist_to_navigation_login);
+        } else {
+            String url = "accounts/" + account + "/observations";
+            Log.d("REQUEST url", url);
+            requestController.loadProductsWithFilter(getActivity(), url, recyclerView, progressBar, info, ListType.WATCH);
+        }
 
-        RecyclerView recyclerView = (RecyclerView) root.findViewById(R.id.recyclerView);
-        WatchlistRecyclerViewAdapter adapter = new WatchlistRecyclerViewAdapter(getActivity(), products);
-        recyclerView.setAdapter(adapter);
-
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
-        recyclerView.setLayoutManager(layoutManager);
 
         return root;
     }

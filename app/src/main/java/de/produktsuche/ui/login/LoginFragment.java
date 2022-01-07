@@ -18,7 +18,12 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.google.android.material.textfield.TextInputLayout;
+
+import java.util.HashMap;
+
 import de.produktsuche.R;
+import de.produktsuche.backend.products.RequestController;
 
 public class LoginFragment extends Fragment {
 
@@ -32,6 +37,21 @@ public class LoginFragment extends Fragment {
             NavHostFragment.findNavController(LoginFragment.this)
                     .navigate(R.id.action_navigation_login_to_navigation_register);
         });
+
+
+        TextInputLayout textInputLayoutUsername = root.findViewById(R.id.loginTextFieldUsername);
+        TextInputLayout textInputLayoutPassword = root.findViewById(R.id.loginTextFieldPassword);
+
+        Button btnLogin = root.findViewById(R.id.buttonLogin);
+        btnLogin.setOnClickListener(v -> {
+            RequestController requestController = new RequestController();
+
+            HashMap<String, String> params = new HashMap<>();
+            params.put("email", textInputLayoutUsername.getEditText().getText().toString());
+            params.put("password", textInputLayoutPassword.getEditText().getText().toString());
+            requestController.login(params, getContext());
+        });
+
         return root;
     }
 
