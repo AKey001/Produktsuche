@@ -1,11 +1,14 @@
 package de.produktsuche.backend.commons;
 
+
 public class PriceConverter {
 
     public String convertPrice(double price) {
         double roundedPrice = Math.round(price * 100.0)/100.0;
 
-        boolean round = roundedPrice % 0.1 == 0;
+        String[] priceSplit = String.valueOf(roundedPrice).split("\\.");
+
+        boolean round = priceSplit[1].length() < 2;
 
         String priceEuro = String.valueOf(roundedPrice);
         if (round) {

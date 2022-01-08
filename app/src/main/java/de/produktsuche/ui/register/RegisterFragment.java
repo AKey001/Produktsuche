@@ -38,7 +38,7 @@ public class RegisterFragment extends Fragment {
                 HashMap<String, String> params = new HashMap<>();
                 params.put("email", textInputLayoutUsername.getEditText().getText().toString());
                 params.put("password", textInputLayoutPassword.getEditText().getText().toString());
-                requestController.register(params, getContext());
+                requestController.register(params, getActivity(), getContext());
             } else {
                 // TODO error pwd not equal
             }

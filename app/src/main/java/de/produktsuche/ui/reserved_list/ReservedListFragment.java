@@ -48,7 +48,7 @@ public class ReservedListFragment extends Fragment {
 
         if (account == null) {
             NavHostFragment.findNavController(ReservedListFragment.this)
-                    .navigate(R.id.action_navigation_watchlist_to_navigation_login);
+                    .navigate(R.id.action_navigation_reserved_list_to_navigation_login);
         } else {
             String url = "accounts/" + account + "/reservations";
             Log.d("REQUEST url", url);

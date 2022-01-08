@@ -24,7 +24,7 @@ import java.util.Map;
 public class JsonRequestHandler {
 
     public<T> void executeObjectRequest(Context context, String url, Map<String, T> param,
-                                      int httpMethod, RequestOperationHandler requestOperationHandler) {
+                                      int httpMethod, RequestOperationHandler requestOperationHandler, RequestOperationHandler requestOperationHandlerError) {
 
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         JsonObjectRequest objectRequest = new JsonObjectRequest(httpMethod, "https://produktsuche.dreamtexx.fun/api/" + url, new JSONObject(param),
@@ -33,10 +33,10 @@ public class JsonRequestHandler {
                     requestOperationHandler.execute(response);
                 },
                 error -> {
+                    requestOperationHandlerError.execute(error);
                     error.printStackTrace();
                     try {
                         Log.d("VOLLEY REQUEST ERROR" , new String(error.networkResponse.data, StandardCharsets.UTF_8));
-                        Toast.makeText(context, "Verbindung fehlgeschlagen", Toast.LENGTH_LONG).show();
                     } catch (NullPointerException e) {
                         e.printStackTrace();
                     }
@@ -58,7 +58,7 @@ public class JsonRequestHandler {
     }
 
     public  void executeArrayRequest(Context context, String url, Map<String, String> param,
-                                int httpMethod, RequestOperationHandler requestOperationHandler) {
+                                int httpMethod, RequestOperationHandler requestOperationHandler, RequestOperationHandler requestOperationHandlerError) {
 
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         JsonArrayRequest objectRequest = new JsonArrayRequest(httpMethod, "https://produktsuche.dreamtexx.fun/api/" + url, null,
@@ -67,13 +67,14 @@ public class JsonRequestHandler {
                     requestOperationHandler.execute(response);
                 },
                 error -> {
+                    requestOperationHandlerError.execute(error);
                     error.printStackTrace();
                     try {
                         Log.d("VOLLEY REQUEST ERROR" , new String(error.networkResponse.data, StandardCharsets.UTF_8));
-                        Toast.makeText(context, "Verbindung fehlgeschlagen", Toast.LENGTH_LONG).show();
                     } catch (NullPointerException e) {
                         e.printStackTrace();
                     }
+
                 }
         ){
             @Override

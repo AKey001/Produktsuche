@@ -3,6 +3,7 @@ package de.produktsuche.backend.products;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -91,25 +92,25 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         holder.getTextViewProduct().setText(product.getName());
         holder.getTextViewStore().setText(product.getMarket_name() + " " + product.getMarket_location());
-        if (product.getQuantity_available() > 0) {
-            holder.getTextViewAvailability().setText(product.getQuantity_available() + " " + type.getAdj());
-        } else {
-            if (type == ListType.RESERVE) {
-                String status = "ausstehend";
-                switch (product.getStatus()) {
-                    case "accepted":
-                        status = product.getCount() + " reserviert";
-                        break;
-                    case "rejected":
-                        status = "abgelehnt";
-                        break;
-                }
-                holder.getTextViewAvailability().setText(status);
-            } else {
-                holder.getTextViewAvailability().setText("nicht " + type.getAdj());
-            }
 
+        if (type == ListType.RESERVE) {
+            String status = "ausstehend";
+            switch (product.getStatus()) {
+                case "accepted":
+                    status = product.getCount() + " reserviert";
+                    break;
+                case "rejected":
+                    status = "abgelehnt";
+                    break;
+            }
+            holder.getTextViewAvailability().setText(status);
+        } else {
+            holder.getTextViewAvailability().setText("nicht " + type.getAdj());
+            if (product.getQuantity_available() > 0) {
+                holder.getTextViewAvailability().setText(product.getQuantity_available() + " " + type.getAdj());
+            }
         }
+
         String price = priceConverter.convertPrice(product.getPrice());
         holder.getTextViewPrice().setText(price);
 

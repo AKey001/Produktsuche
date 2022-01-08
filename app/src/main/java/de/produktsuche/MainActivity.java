@@ -23,6 +23,7 @@ import de.produktsuche.ui.search.SearchFragment;
 
 public class MainActivity extends AppCompatActivity {
     private NavController navController;
+    SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
 
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         Log.d("NOTIFICATION FCM ID", sharedPreferences.getString("fcm_token", "error"));
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
@@ -52,6 +53,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
+
+        MenuItem item = menu.findItem(R.id.action_login);
+        String account = sharedPreferences.getString("AccountUUID", null);
+        if (account != null) {
+            item.setTitle("Logout");
+        }
+
+
         return true;
     }
 
@@ -60,7 +69,14 @@ public class MainActivity extends AppCompatActivity {
 
         switch (item.getItemId()) {
             case R.id.action_login:
-                navController.navigate(R.id.navigation_login);
+                String account = sharedPreferences.getString("AccountUUID", null);
+                if (account != null) {
+                    sharedPreferences.edit().putString("AccountUUID", null).apply();
+                    item.setTitle("Login");
+                    navController.navigate(R.id.navigation_search);
+                } else {
+                    navController.navigate(R.id.navigation_login);
+                }
                 break;
         }
 

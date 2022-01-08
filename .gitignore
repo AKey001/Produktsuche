@@ -13,3 +13,7 @@
 .externalNativeBuild
 .cxx
 local.properties
+/app/src/test/java/de/produktsuche/backend/commons/PriceConverterTest.java
+.idea/dbnavigator.xml
+.idea/deploymentTargetDropDown.xml
+.idea/misc.xml
