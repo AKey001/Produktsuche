@@ -153,7 +153,17 @@ public class RequestController {
         Log.d("VOLLEY REQUEST remove path", url);
         jsonRequestHandler.executeObjectRequest(activity.getApplicationContext(), url, new HashMap<>(), Request.Method.DELETE, response -> {
 
-        }, error -> Toast.makeText(activity.getApplicationContext(), "Entfernen fehlgeschlagen", Toast.LENGTH_LONG).show());
+        }, error -> {
+            try {
+                VolleyError volleyError = (VolleyError) error;
+                String errorData = new String(volleyError.networkResponse.data);
+                if (errorData != null) {
+                    Toast.makeText(activity.getApplicationContext(), "Entfernen fehlgeschlagen", Toast.LENGTH_LONG).show();
+                }
+            } catch (NullPointerException e) {
+                e.printStackTrace();
+            }
+        });
     }
 
     public void removeFromReservations(Activity activity, String accountID, String productID) {
@@ -162,7 +172,18 @@ public class RequestController {
 
         jsonRequestHandler.executeObjectRequest(activity.getApplicationContext(), url, new HashMap<>(), Request.Method.DELETE, response -> {
 
-        }, error-> Toast.makeText(activity.getApplicationContext(), "Entfernen fehlgeschlagen", Toast.LENGTH_LONG).show());
+        }, error -> {
+            try {
+                VolleyError volleyError = (VolleyError) error;
+                String errorData = new String(volleyError.networkResponse.data);
+                if (errorData != null) {
+                    Toast.makeText(activity.getApplicationContext(), "Entfernen fehlgeschlagen", Toast.LENGTH_LONG).show();
+                }
+            } catch (NullPointerException e) {
+                e.printStackTrace();
+            }
+
+        });
     }
 
 
