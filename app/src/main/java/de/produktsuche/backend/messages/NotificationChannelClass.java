@@ -1,4 +1,4 @@
-package de.produktsuche.backend.services;
+package de.produktsuche.backend.messages;
 
 import android.app.Application;
 import android.app.NotificationChannel;

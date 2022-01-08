@@ -7,19 +7,15 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
-
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-import de.produktsuche.ui.search.SearchFragment;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
     private NavController navController;
@@ -67,17 +63,15 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
-        switch (item.getItemId()) {
-            case R.id.action_login:
-                String account = sharedPreferences.getString("AccountUUID", null);
-                if (account != null) {
-                    sharedPreferences.edit().putString("AccountUUID", null).apply();
-                    item.setTitle("Login");
-                    navController.navigate(R.id.navigation_search);
-                } else {
-                    navController.navigate(R.id.navigation_login);
-                }
-                break;
+        if (item.getItemId() == R.id.action_login) {
+            String account = sharedPreferences.getString("AccountUUID", null);
+            if (account != null) {
+                sharedPreferences.edit().putString("AccountUUID", null).apply();
+                item.setTitle("Login");
+                navController.navigate(R.id.navigation_search);
+            } else {
+                navController.navigate(R.id.navigation_login);
+            }
         }
 
         return super.onOptionsItemSelected(item);

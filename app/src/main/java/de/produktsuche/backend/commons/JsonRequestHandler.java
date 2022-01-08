@@ -4,27 +4,24 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.util.Log;
-import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.JsonRequest;
 import com.android.volley.toolbox.Volley;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 
+@SuppressWarnings("ALL")
 public class JsonRequestHandler {
 
-    public<T> void executeObjectRequest(Context context, String url, Map<String, T> param,
-                                      int httpMethod, RequestOperationHandler requestOperationHandler, RequestOperationHandler requestOperationHandlerError) {
+    public<T> void executeObjectRequest(Context context, String url, Map<String, T> param, int httpMethod,
+                                        RequestOperationHandler requestOperationHandler,
+                                        RequestOperationHandler requestOperationHandlerError) {
 
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         JsonObjectRequest objectRequest = new JsonObjectRequest(httpMethod, "https://produktsuche.dreamtexx.fun/api/" + url, new JSONObject(param),
@@ -57,8 +54,8 @@ public class JsonRequestHandler {
 
     }
 
-    public  void executeArrayRequest(Context context, String url, Map<String, String> param,
-                                int httpMethod, RequestOperationHandler requestOperationHandler, RequestOperationHandler requestOperationHandlerError) {
+    public  void executeArrayRequest(Context context, String url, int httpMethod,
+                                     RequestOperationHandler requestOperationHandler, RequestOperationHandler requestOperationHandlerError) {
 
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         JsonArrayRequest objectRequest = new JsonArrayRequest(httpMethod, "https://produktsuche.dreamtexx.fun/api/" + url, null,

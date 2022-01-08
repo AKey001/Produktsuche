@@ -18,10 +18,6 @@ public class Product {
         return id;
     }
 
-    public String getMarket_id() {
-        return market_id;
-    }
-
     public String getName() {
         return name;
     }
@@ -32,10 +28,6 @@ public class Product {
 
     public int getQuantity_available() {
         return quantity_available;
-    }
-
-    public int getQuantity_reserved() {
-        return quantity_reserved;
     }
 
     public String getMarket_name() {

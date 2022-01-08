@@ -1,7 +1,5 @@
 package de.produktsuche.backend.products;
 
-import de.produktsuche.R;
-
 public enum ListType {
     SEARCH("vorhanden", ""),
     WATCH("vorhanden", "Von der Watchlist entfernen?"),

@@ -1,4 +1,4 @@
-package de.produktsuche.ui.reserved_list;
+package de.produktsuche.ui.tabs;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -13,19 +13,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import de.produktsuche.R;
-
 import de.produktsuche.backend.products.ListType;
-import de.produktsuche.backend.products.Product;
-import de.produktsuche.backend.products.RecyclerViewAdapter;
 import de.produktsuche.backend.products.RequestController;
-import de.produktsuche.ui.watchlist.WatchlistFragment;
 
 public class ReservedListFragment extends Fragment {
 
@@ -52,7 +44,7 @@ public class ReservedListFragment extends Fragment {
         } else {
             String url = "accounts/" + account + "/reservations";
             Log.d("REQUEST url", url);
-            requestController.loadProductsWithFilter(getActivity(), url, recyclerView, progressBar, info, ListType.RESERVE);
+            requestController.loadProductsWithFilter(requireActivity(), url, recyclerView, progressBar, info, ListType.RESERVE);
         }
 
 

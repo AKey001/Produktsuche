@@ -1,4 +1,4 @@
-package de.produktsuche.ui.search;
+package de.produktsuche.ui.tabs;
 
 import android.app.SearchManager;
 import android.content.Context;
@@ -51,11 +51,9 @@ public class SearchFragment extends Fragment {
 
         requestController = new RequestController();
 
-        dialogbuilder = new MaterialAlertDialogBuilder(getContext());
+        dialogbuilder = new MaterialAlertDialogBuilder(requireContext());
         dialogbuilder.setTitle("Filter")
-                .setNegativeButton("Abbrechen", (dialog, which) -> {
-                    dialog.dismiss();
-                })
+                .setNegativeButton("Abbrechen", (dialog, which) -> dialog.dismiss())
                 .setPositiveButton("Ok", (dialog, which) -> {
                     TextView city = dialogView.findViewById(R.id.query);
                     TextView lowest = dialogView.findViewById(R.id.lowest);
@@ -85,9 +83,9 @@ public class SearchFragment extends Fragment {
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
         inflater.inflate(R.menu.menu_search, menu);
 
-        SearchManager searchManager = (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);
+        SearchManager searchManager = (SearchManager) requireActivity().getSystemService(Context.SEARCH_SERVICE);
         final SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
-        searchView.setSearchableInfo(searchManager.getSearchableInfo(getActivity().getComponentName()));
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(requireActivity().getComponentName()));
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -130,7 +128,7 @@ public class SearchFragment extends Fragment {
 
                 Log.d("REQUEST", url);
 
-                requestController.loadProductsWithFilter(getActivity(), url, recyclerView, progressBar, info, ListType.SEARCH);
+                requestController.loadProductsWithFilter(requireActivity(), url, recyclerView, progressBar, info, ListType.SEARCH);
                 return false;
             }
 
@@ -145,15 +143,11 @@ public class SearchFragment extends Fragment {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
-        switch (item.getItemId()) {
-            case R.id.action_filter:
-
-                dialogView = getActivity().getLayoutInflater().inflate(R.layout.popup_filter, null, false);
-                dialogbuilder.setView(dialogView);
-                dialogbuilder.create();
-                dialogbuilder.show();
-
-                break;
+        if (item.getItemId() == R.id.action_filter) {
+            dialogView = requireActivity().getLayoutInflater().inflate(R.layout.popup_filter, null, false);
+            dialogbuilder.setView(dialogView);
+            dialogbuilder.create();
+            dialogbuilder.show();
         }
         return true;
     }

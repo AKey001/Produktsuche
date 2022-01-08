@@ -1,6 +1,6 @@
-package de.produktsuche.backend.services;
+package de.produktsuche.backend.messages;
 
-import static de.produktsuche.backend.services.NotificationChannelClass.CHANNEL_ID;
+import static de.produktsuche.backend.messages.NotificationChannelClass.CHANNEL_ID;
 
 import android.app.PendingIntent;
 import android.content.Intent;
@@ -15,6 +15,8 @@ import androidx.core.app.NotificationManagerCompat;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
+
+import java.util.Objects;
 
 import de.produktsuche.MainActivity;
 import de.produktsuche.R;
@@ -45,12 +47,12 @@ public class FCMMessagingService extends FirebaseMessagingService {
         sharedPreferences.edit().putInt("notification_id", notificationID).apply();
 
 
-        String title = remoteMessage.getNotification().getTitle() + "";
+        String title = Objects.requireNonNull(remoteMessage.getNotification()).getTitle() + "";
         String body = remoteMessage.getNotification().getBody()+ "";
 
         Intent intent = new Intent(this, MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_IMMUTABLE);
 
         NotificationCompat.Builder notification = new NotificationCompat.Builder(this, CHANNEL_ID)
                 .setSmallIcon(R.drawable.ic_baseline_storefront_24)

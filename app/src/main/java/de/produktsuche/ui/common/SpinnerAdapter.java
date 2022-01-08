@@ -28,7 +28,7 @@ public class SpinnerAdapter extends ArrayAdapter<String> {
         String item = getItem(position);
         View root = inflater.inflate(R.layout.spinner_item, null, true);
 
-        TextView text = (TextView) root.findViewById(R.id.item);
+        TextView text = root.findViewById(R.id.item);
         text.setText(item);
 
         return root;

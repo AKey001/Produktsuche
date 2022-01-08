@@ -12,7 +12,6 @@ import android.widget.Toast;
 
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -33,10 +32,9 @@ import java.util.Map;
 
 import de.produktsuche.R;
 import de.produktsuche.backend.commons.JsonRequestHandler;
-import de.produktsuche.ui.reserved_list.ReservedListFragment;
 
 public class RequestController {
-    private JsonRequestHandler jsonRequestHandler;
+    private final JsonRequestHandler jsonRequestHandler;
 
     public RequestController() {
         this.jsonRequestHandler = new JsonRequestHandler();
@@ -48,7 +46,7 @@ public class RequestController {
         Context context = activity.getApplicationContext();
 
         JsonRequestHandler jsonRequestHandler = new JsonRequestHandler();
-        jsonRequestHandler.executeArrayRequest(context, url, new HashMap<>(), Request.Method.GET, (response) -> {
+        jsonRequestHandler.executeArrayRequest(context, url, Request.Method.GET, (response) -> {
 
             Gson gson = new Gson();
 
@@ -66,18 +64,17 @@ public class RequestController {
                 info.setVisibility(View.INVISIBLE);
             }
             progressBar.setVisibility(View.GONE);
-        }, error -> {
-            Toast.makeText(context, "Verbindung fehlgeschlagen", Toast.LENGTH_LONG).show();
-        });
+        }, error -> Toast.makeText(context, "Verbindung fehlgeschlagen", Toast.LENGTH_LONG).show());
 
     }
 
 
-    public void login(HashMap<String, String> params, Activity activity, Context context) {
+    public void login(HashMap<String, String> params, Activity activity, Context context, ProgressBar progressBar) {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
         params.put("fcm_token", sharedPreferences.getString("fcm_token", ""));
 
         jsonRequestHandler.executeObjectRequest(context, "auth/login", params, Request.Method.POST, response -> {
+            progressBar.setVisibility(View.GONE);
             try {
                 JSONObject jsonObject1 = new JSONObject(response.toString());
 
@@ -86,10 +83,12 @@ public class RequestController {
 
                 NavController navController = Navigation.findNavController(activity, R.id.nav_host_fragment);
                 navController.navigate(R.id.navigation_search);
+                Toast.makeText(context, "erfolgreich angemeldet", Toast.LENGTH_SHORT).show();
             } catch (JSONException e) {
                 e.printStackTrace();
             }
         }, error -> {
+            progressBar.setVisibility(View.GONE);
             try {
                 VolleyError volleyError = (VolleyError) error;
                 JSONObject errorJSON = new JSONObject(new String(volleyError.networkResponse.data, StandardCharsets.UTF_8));
@@ -111,7 +110,7 @@ public class RequestController {
 
     // https://1codejam.dreamtexx.fun/api/
 
-    public void register(HashMap<String, String> params, Activity activity, Context context) {
+    public void register(HashMap<String, String> params, Activity activity, Context context, ProgressBar progressBar) {
         jsonRequestHandler.executeObjectRequest(context, "auth/register", params, Request.Method.POST, response -> {
             Log.d("VOLLEY REQUEST Response", response.toString());
             try {
@@ -120,14 +119,15 @@ public class RequestController {
                 SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
                 sharedPreferences.edit().putString("AccountUUID", jsonObject.getString("id")).apply();
 
-                login(params, activity, context);
+                login(params, activity, context, progressBar);
 
             } catch (JSONException e) {
                 e.printStackTrace();
-
+                progressBar.setVisibility(View.GONE);
             }
         }, error -> {
             Toast.makeText(context, "Registrierung fehlgeschlagen", Toast.LENGTH_LONG).show();
+            progressBar.setVisibility(View.GONE);
         });
 
     }
@@ -136,9 +136,7 @@ public class RequestController {
     public void watchProduct(String accountID, Context context) {
         jsonRequestHandler.executeObjectRequest(context, "items/" + accountID + "/observations",
                 new HashMap<>(), Request.Method.POST, response -> Log.d("VOLLEY REQUEST watch response", response.toString()),
-                error -> {
-                    Toast.makeText(context, "Beobachtung fehlgeschlagen", Toast.LENGTH_LONG).show();
-                });
+                error -> Toast.makeText(context, "Beobachtung fehlgeschlagen", Toast.LENGTH_LONG).show());
     }
 
     public void reservateProduct(String accountID, int count, Context context) {
@@ -146,9 +144,7 @@ public class RequestController {
         params.put("count", count);
         jsonRequestHandler.executeObjectRequest(context, "items/" + accountID + "/reservations",
                 params, Request.Method.POST, response -> Log.d("VOLLEY REQUEST watch response", response.toString()),
-                error -> {
-                    Toast.makeText(context, "Reservierung fehlgeschlagen", Toast.LENGTH_LONG).show();
-                });
+                error -> Toast.makeText(context, "Reservierung fehlgeschlagen", Toast.LENGTH_LONG).show());
     }
 
     public void removeFromWatchlist(Activity activity, String accountID, String productID) {
@@ -157,9 +153,7 @@ public class RequestController {
         Log.d("VOLLEY REQUEST remove path", url);
         jsonRequestHandler.executeObjectRequest(activity.getApplicationContext(), url, new HashMap<>(), Request.Method.DELETE, response -> {
 
-        }, error -> {
-            Toast.makeText(activity.getApplicationContext(), "Entfernen fehlgeschlagen", Toast.LENGTH_LONG).show();
-        });
+        }, error -> Toast.makeText(activity.getApplicationContext(), "Entfernen fehlgeschlagen", Toast.LENGTH_LONG).show());
     }
 
     public void removeFromReservations(Activity activity, String accountID, String productID) {
@@ -168,9 +162,7 @@ public class RequestController {
 
         jsonRequestHandler.executeObjectRequest(activity.getApplicationContext(), url, new HashMap<>(), Request.Method.DELETE, response -> {
 
-        }, error-> {
-            Toast.makeText(activity.getApplicationContext(), "Entfernen fehlgeschlagen", Toast.LENGTH_LONG).show();
-        });
+        }, error-> Toast.makeText(activity.getApplicationContext(), "Entfernen fehlgeschlagen", Toast.LENGTH_LONG).show());
     }
 
 

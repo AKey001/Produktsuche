@@ -3,7 +3,6 @@ package de.produktsuche.backend.products;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -91,7 +90,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         Product product = items.get(position);
 
         holder.getTextViewProduct().setText(product.getName());
-        holder.getTextViewStore().setText(product.getMarket_name() + " " + product.getMarket_location());
+        String store = product.getMarket_name() + " " + product.getMarket_location();
+        holder.getTextViewStore().setText(store);
 
         if (type == ListType.RESERVE) {
             String status = "ausstehend";
@@ -105,9 +105,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             }
             holder.getTextViewAvailability().setText(status);
         } else {
-            holder.getTextViewAvailability().setText("nicht " + type.getAdj());
+            String availability = "nicht " + type.getAdj();
+            holder.getTextViewAvailability().setText(availability);
             if (product.getQuantity_available() > 0) {
-                holder.getTextViewAvailability().setText(product.getQuantity_available() + " " + type.getAdj());
+                String noAvailability = product.getQuantity_available() + " " + type.getAdj();
+                holder.getTextViewAvailability().setText(noAvailability);
             }
         }
 
@@ -166,12 +168,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                         case WATCH:
                             requestController.removeFromWatchlist(activity, account, product.getId());
                             items.remove(position);
-                            notifyDataSetChanged();
+                            notifyItemRemoved(position);
                             break;
                         case RESERVE:
                             requestController.removeFromReservations(activity, account, product.getId());
                             items.remove(position);
-                            notifyDataSetChanged();
+                            notifyItemRemoved(position);
                             break;
                     }
                 });
