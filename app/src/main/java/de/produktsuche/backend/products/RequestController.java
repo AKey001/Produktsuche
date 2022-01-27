@@ -176,7 +176,7 @@ public class RequestController {
             try {
                 VolleyError volleyError = (VolleyError) error;
                 String errorData = new String(volleyError.networkResponse.data);
-                if (errorData != null) {
+                if (errorData != null || !errorData.equals("")) {
                     Toast.makeText(activity.getApplicationContext(), "Entfernen fehlgeschlagen", Toast.LENGTH_LONG).show();
                 }
             } catch (NullPointerException e) {
