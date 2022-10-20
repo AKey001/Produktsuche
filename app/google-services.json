@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "186463121321",
-    "project_id": "produktsuche-se1",
-    "storage_bucket": "produktsuche-se1.appspot.com"
+    "project_number": "324169762199",
+    "project_id": "produktsuche-83181",
+    "storage_bucket": "produktsuche-83181.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:186463121321:android:eb758997478ef2e50d5eb8",
+        "mobilesdk_app_id": "1:324169762199:android:8625d85f2543a8ca2f70d2",
         "android_client_info": {
           "package_name": "de.produktsuche"
         }
       },
       "oauth_client": [
         {
-          "client_id": "186463121321-u2oecvbl0tubk78npne49qbb33iujsig.apps.googleusercontent.com",
+          "client_id": "324169762199-7nke6m27hl0pkrorc5e2iiuf1469ek1t.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBJknxiHqyVQpXUP9oB9dKgMQ8EXcMKvbs"
+          "current_key": "AIzaSyADk1BfYZZGF3Fhw7rCAqKdD7kl4rCTxR4"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "186463121321-u2oecvbl0tubk78npne49qbb33iujsig.apps.googleusercontent.com",
+              "client_id": "324169762199-7nke6m27hl0pkrorc5e2iiuf1469ek1t.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

@@ -18,13 +18,14 @@ import java.util.Map;
 
 @SuppressWarnings("ALL")
 public class JsonRequestHandler {
+    String URL = "http://193.174.103.48:8080/api/";
 
-    public<T> void executeObjectRequest(Context context, String url, Map<String, T> param, int httpMethod,
+    public<T> void executeObjectRequest(Context context, String path, Map<String, T> param, int httpMethod,
                                         RequestOperationHandler requestOperationHandler,
                                         RequestOperationHandler requestOperationHandlerError) {
 
         RequestQueue requestQueue = Volley.newRequestQueue(context);
-        JsonObjectRequest objectRequest = new JsonObjectRequest(httpMethod, "https://produktsuche.dreamtexx.fun/api/" + url, new JSONObject(param),
+        JsonObjectRequest objectRequest = new JsonObjectRequest(httpMethod, URL + path, new JSONObject(param),
                 response -> {
                     Log.d("VOLLEY REQUEST Response", response.toString());
                     requestOperationHandler.execute(response);
@@ -54,11 +55,11 @@ public class JsonRequestHandler {
 
     }
 
-    public  void executeArrayRequest(Context context, String url, int httpMethod,
+    public  void executeArrayRequest(Context context, String path, int httpMethod,
                                      RequestOperationHandler requestOperationHandler, RequestOperationHandler requestOperationHandlerError) {
 
         RequestQueue requestQueue = Volley.newRequestQueue(context);
-        JsonArrayRequest objectRequest = new JsonArrayRequest(httpMethod, "https://produktsuche.dreamtexx.fun/api/" + url, null,
+        JsonArrayRequest objectRequest = new JsonArrayRequest(httpMethod, URL + path, null,
                 response -> {
                     Log.d("VOLLEY REQUEST Response", response.toString());
                     requestOperationHandler.execute(response);
