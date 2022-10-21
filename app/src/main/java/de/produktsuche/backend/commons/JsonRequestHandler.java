@@ -18,7 +18,7 @@ import java.util.Map;
 
 @SuppressWarnings("ALL")
 public class JsonRequestHandler {
-    String URL = "http://193.174.103.48:8080/api/";
+    private final String URL = "http://193.174.103.48:8080/api/";
 
     public<T> void executeObjectRequest(Context context, String path, Map<String, T> param, int httpMethod,
                                         RequestOperationHandler requestOperationHandler,
