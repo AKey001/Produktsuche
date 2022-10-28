@@ -1,6 +1,16 @@
 plugins {
     id 'com.android.application'
     id 'com.google.gms.google-services'
+
+    id "org.sonarqube" version "3.4.0.2513"
+}
+
+sonarqube {
+    properties {
+        property "sonar.host.url", "http://193.174.103.48:9000"
+        property "sonar.login", "sqp_7b55f2b5bc8a21313cb6a9b5792f315f5b72c2a0"
+        property "sonar.projectKey", "produktsuche-app"
+    }
 }
 
 android {
