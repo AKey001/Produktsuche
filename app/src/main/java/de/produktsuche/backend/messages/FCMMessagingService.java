@@ -27,10 +27,8 @@ public class FCMMessagingService extends FirebaseMessagingService {
     @Override
     public void onNewToken(@NonNull String id) {
         super.onNewToken(id);
-
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         sharedPreferences.edit().putString(TOKEN_PREFERENCE_KEY, id).apply();
-
         Log.d("INSTANCE_ID", id);
     }
 
@@ -45,7 +43,6 @@ public class FCMMessagingService extends FirebaseMessagingService {
             notificationID = 0;
         }
         sharedPreferences.edit().putInt("notification_id", notificationID).apply();
-
 
         String title = Objects.requireNonNull(remoteMessage.getNotification()).getTitle() + "";
         String body = remoteMessage.getNotification().getBody()+ "";
@@ -65,13 +62,10 @@ public class FCMMessagingService extends FirebaseMessagingService {
                 .setLights(Color.GREEN, 1000,3000)
                 .setStyle(new NotificationCompat.BigTextStyle().bigText(body));
 
-
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
         notificationManager.notify(notificationID, notification.build());
 
         Log.d("NOTIFICATION FCM", remoteMessage.getNotification().getTitle());
         Log.d("NOTIFICATION FCM", remoteMessage.getNotification().getBody());
-
     }
-
 }

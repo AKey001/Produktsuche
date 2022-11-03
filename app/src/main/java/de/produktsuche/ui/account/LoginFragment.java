@@ -30,7 +30,6 @@ public class LoginFragment extends Fragment {
         registerBtn.setOnClickListener(v -> NavHostFragment.findNavController(LoginFragment.this)
                 .navigate(R.id.action_navigation_login_to_navigation_register));
 
-
         TextInputLayout textInputLayoutUsername = root.findViewById(R.id.loginTextFieldUsername);
         TextInputLayout textInputLayoutPassword = root.findViewById(R.id.loginTextFieldPassword);
         ProgressBar progressBar = root.findViewById(R.id.progressBarLogin);
@@ -69,9 +68,6 @@ public class LoginFragment extends Fragment {
                 requestController.login(params, getActivity(), getContext(), progressBar);
             }
         });
-
         return root;
     }
-
-
 }

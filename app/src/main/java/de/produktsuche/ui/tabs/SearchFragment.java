@@ -59,7 +59,7 @@ public class SearchFragment extends Fragment {
                     TextView lowest = dialogView.findViewById(R.id.lowest);
                     TextView highest = dialogView.findViewById(R.id.highest);
 
-                    if (city == null  && city.getText().toString().trim().equals("")) {
+                    if (city == null && city.getText().toString().trim().equals("")) {
                         this.city = null;
                     } else {
                         this.city =  city.getText().toString();
@@ -75,7 +75,6 @@ public class SearchFragment extends Fragment {
                         this.highest = highest.getText().toString();
                     }
                 });
-
         return root;
     }
 
@@ -137,7 +136,6 @@ public class SearchFragment extends Fragment {
                 return false;
             }
         });
-
     }
 
     @Override

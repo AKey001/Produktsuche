@@ -38,7 +38,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         this.requestController = new RequestController();
     }
 
-
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView textViewProduct;
         private final TextView textViewStore;
@@ -178,8 +177,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     }
                 });
             }
-
-
             dialogBuilder.create();
             dialogBuilder.show();
         });
