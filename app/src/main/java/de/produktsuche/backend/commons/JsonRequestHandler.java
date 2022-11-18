@@ -38,7 +38,6 @@ public class JsonRequestHandler {
                     } catch (NullPointerException e) {
                         e.printStackTrace();
                     }
-
                 }
         ){
             @Override
@@ -52,7 +51,6 @@ public class JsonRequestHandler {
             }
         };
         requestQueue.add(objectRequest);
-
     }
 
     public  void executeArrayRequest(Context context, String path, int httpMethod,
@@ -86,9 +84,5 @@ public class JsonRequestHandler {
             }
         };
         requestQueue.add(objectRequest);
-
     }
-
-
-
 }

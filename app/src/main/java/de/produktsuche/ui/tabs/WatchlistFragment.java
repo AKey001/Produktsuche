@@ -46,10 +46,6 @@ public class WatchlistFragment extends Fragment {
             Log.d("REQUEST url", url);
             requestController.loadProductsWithFilter(requireActivity(), url, recyclerView, progressBar, info, ListType.WATCH);
         }
-
-
         return root;
     }
-
-
 }

@@ -68,7 +68,6 @@ public class RequestController {
 
     }
 
-
     public void login(HashMap<String, String> params, Activity activity, Context context, ProgressBar progressBar) {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
         params.put("fcm_token", sharedPreferences.getString("fcm_token", ""));
@@ -109,7 +108,6 @@ public class RequestController {
     }
 
     // https://1codejam.dreamtexx.fun/api/
-
     public void register(HashMap<String, String> params, Activity activity, Context context, ProgressBar progressBar) {
         jsonRequestHandler.executeObjectRequest(context, "auth/register", params, Request.Method.POST, response -> {
             Log.d("VOLLEY REQUEST Response", response.toString());
@@ -129,9 +127,7 @@ public class RequestController {
             Toast.makeText(context, "Registrierung fehlgeschlagen", Toast.LENGTH_LONG).show();
             progressBar.setVisibility(View.GONE);
         });
-
     }
-
 
     public void watchProduct(String accountID, Context context) {
         jsonRequestHandler.executeObjectRequest(context, "items/" + accountID + "/observations",
@@ -182,9 +178,6 @@ public class RequestController {
             } catch (NullPointerException e) {
                 e.printStackTrace();
             }
-
         });
     }
-
-
 }

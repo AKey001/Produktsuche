@@ -58,7 +58,4 @@ public class Product {
                 " market_name=" + market_name +
                 " market_location=" + market_location;
     }
-
-
-
 }

@@ -28,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         Log.d("NOTIFICATION FCM ID", sharedPreferences.getString("fcm_token", "error"));
 
@@ -42,8 +41,6 @@ public class MainActivity extends AppCompatActivity {
 
         AppBarConfiguration appBarConfiguration1 = new AppBarConfiguration.Builder(R.id.mobile_navigation).build();
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration1);
-
-
     }
 
     @Override
@@ -55,8 +52,6 @@ public class MainActivity extends AppCompatActivity {
         if (account != null) {
             item.setTitle("Logout");
         }
-
-
         return true;
     }
 
@@ -73,7 +68,6 @@ public class MainActivity extends AppCompatActivity {
                 navController.navigate(R.id.navigation_login);
             }
         }
-
         return super.onOptionsItemSelected(item);
     }
 }

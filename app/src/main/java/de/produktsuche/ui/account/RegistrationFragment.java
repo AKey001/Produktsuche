@@ -82,12 +82,7 @@ public class RegistrationFragment extends Fragment {
                     textInputLayoutRepeat.setEndIconActivated(true);
                 }
             }
-
-
         });
-
         return root;
     }
-
-
 }
