@@ -89,7 +89,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         Product product = items.get(position);
 
         holder.getTextViewProduct().setText(product.getName());
-        String store = product.getMarket_name() + " " + product.getMarket_location();
+        String store = product.getMarketName() + " " + product.getMarketLocation();
         holder.getTextViewStore().setText(store);
 
         if (type == ListType.RESERVE) {
@@ -106,8 +106,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         } else {
             String availability = "nicht " + type.getAdj();
             holder.getTextViewAvailability().setText(availability);
-            if (product.getQuantity_available() > 0) {
-                String noAvailability = product.getQuantity_available() + " " + type.getAdj();
+            if (product.getQuantityAvailable() > 0) {
+                String noAvailability = product.getQuantityAvailable() + " " + type.getAdj();
                 holder.getTextViewAvailability().setText(noAvailability);
             }
         }
@@ -132,7 +132,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                             dialogBuilder1.setView(dialogView);
 
                             List<String> counts = new ArrayList<>();
-                            for (int i = 0; i < product.getQuantity_available(); i++) {
+                            for (int i = 0; i < product.getQuantityAvailable(); i++) {
                                 counts.add(String.valueOf(i + 1));
                             }
 
