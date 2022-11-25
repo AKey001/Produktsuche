@@ -4,13 +4,13 @@ import androidx.annotation.NonNull;
 
 public class Product {
     private String id;
-    private String market_id;
+    private String marketId;
     private String name;
     private double price;
-    private int quantity_available;
-    private int quantity_reserved;
-    private String market_name;
-    private String market_location;
+    private int quantityAvailable;
+    private int quantityReserved;
+    private String marketName;
+    private String marketLocation;
     private String status;
     private int count;
 
@@ -26,16 +26,16 @@ public class Product {
         return price;
     }
 
-    public int getQuantity_available() {
-        return quantity_available;
+    public int getQuantityAvailable() {
+        return quantityAvailable;
     }
 
-    public String getMarket_name() {
-        return market_name;
+    public String getMarketName() {
+        return marketName;
     }
 
-    public String getMarket_location() {
-        return market_location;
+    public String getMarketLocation() {
+        return marketLocation;
     }
 
     public String getStatus() {
@@ -50,12 +50,12 @@ public class Product {
     @Override
     public String toString() {
         return "id=" + id +
-                " market_id=" + market_id +
+                " market_id=" + marketId +
                 " name=" + name +
                 " price=" + price +
-                " quantity_available=" + quantity_available +
-                " quantity_reserved=" + quantity_reserved +
-                " market_name=" + market_name +
-                " market_location=" + market_location;
+                " quantity_available=" + quantityAvailable +
+                " quantity_reserved=" + quantityReserved +
+                " market_name=" + marketName +
+                " market_location=" + marketLocation;
     }
 }
